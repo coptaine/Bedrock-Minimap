@@ -9,6 +9,9 @@ This addon adds Minimap to pre-made worlds in your game. It's well polished and 
 
 FEATURES:
 
+- Zoom function
+
+![map_zoom](https://github.com/coptaine/Bedrock-Minimap/assets/34676595/6361dc86-2c40-4f9f-bc1a-443da53ca95a)
 
 - Player rotation:
 
