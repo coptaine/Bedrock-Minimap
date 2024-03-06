@@ -1,0 +1,23 @@
+{
+	"format_version": "1.10.0",
+	"animation_controllers": {
+		"controller.animation.player.minimap": {
+			"initial_state": "default",
+			"states": {
+				"default": {
+					"transitions": [
+						{ "run": "q.get_equipped_item_name == 'minimap'" }
+					]
+				},
+				"run": {
+					"on_entry": [
+						"/title @s actionbar Stand + Use: Zoom §c(-)§r\nSneak + Use: Zoom §a(+)"
+					],
+					"transitions": [
+						{ "default": "q.get_equipped_item_name != 'minimap'" }
+					]
+				}
+			}
+		}
+	}
+}

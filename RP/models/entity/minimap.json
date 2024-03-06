@@ -1,0 +1,37 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.minimap",
+				"texture_width": 16,
+				"texture_height": 16,
+				"visible_bounds_width": 3,
+				"visible_bounds_height": 103,
+				"visible_bounds_offset": [0, 50.5, 0]
+			},
+			"bones": [
+				{
+					"name": "minimap",
+					"pivot": [0, 177, 0]
+				},
+				{
+					"name": "map",
+					"parent": "minimap",
+					"pivot": [0, 177, 0],
+					"cubes": [
+						{"origin": [-8, 168, 0], "size": [16, 16, 0], "uv": [0, 0]}
+					]
+				},
+				{
+					"name": "bg",
+					"parent": "minimap",
+					"pivot": [0, 177, 0.1],
+					"cubes": [
+						{"origin": [-8, 168, 0.1], "size": [16, 16, 0], "uv": [0, 0]}
+					]
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,31 @@
+{
+  "minimap_root": {
+    "renderer": "hud_player_renderer",
+    "size": [ 0, 0 ],
+    "anchor_from": "top_right",
+    "anchor_to": "top_right",
+    "type": "custom"
+  },
+  "root_panel": {
+    "modifications": [
+      {
+        "array_name": "controls",
+        "operation": "insert_front",
+        "value": {
+          "minimap@hud.minimap_root": {
+            "controls": [
+              {
+                "minimap": {
+                  "renderer": "live_player_renderer",
+                  "size": [ 100, 100 ],
+                  "offset": [ -70, 950 ],
+                  "type": "custom"
+                }
+              }
+            ]
+          }
+        }
+      }
+    ]
+  }
+}

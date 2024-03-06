@@ -1,0 +1,156 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.player.minimap.bound_to_edges": {
+			"loop": true,
+			"bones": {
+				"minimap": {
+					"relative_to": {
+						"rotation": "entity"
+					},
+					"rotation": [ 0, "q.is_riding ? q.target_y_rotation : 0", 0 ]
+				},
+				"self": {
+					"rotation": [ 0, 0, "q.is_sneaking || q.is_sprinting ? q.camera_rotation(1) + 180 : 0" ],
+					"position": [
+						"math.clamp(q.position(0) < v.min_x ? (q.position(0) - v.min_x) * v.x_cal : (q.position(0) > v.max_x ? (q.position(0) - v.max_x) * v.x_cal : 0), -8, 8)",
+						"math.clamp(q.position(2) < v.min_z ? (q.position(2) - v.min_z) * -v.z_cal : (q.position(2) > v.max_z? (q.position(2) - v.max_z) * -v.z_cal : 0), -8, 8)",
+						0
+					],
+					"scale": "math.lerp(v.self_scale_min, v.self_scale_max, 1 - v.zoom)"
+				},
+				"bg": {
+					"scale": 1.15
+				},
+				"npc_1": {
+					"scale": "math.lerp(v.npc_scale_min, v.npc_scale_max, 1 - v.zoom)",
+					"position": [ "math.clamp(-(math.clamp(q.position(0), v.min_x, v.max_x) - v.npc1_x) * math.clamp(math.abs(8 / (math.clamp(q.position(2), v.min_z, v.max_z) - v.npc1_z)), 0, v.x_cal), -8, 8)", "math.clamp((math.clamp(q.position(2), v.min_z, v.max_z) - v.npc1_z) * math.clamp(math.abs(8 / (math.clamp(q.position(0), v.min_x, v.max_x) - v.npc1_x)), 0, v.z_cal), -8, 8)", 0 ]
+				}, 
+				"npc_2": {
+					"scale": "math.lerp(v.npc_scale_min, v.npc_scale_max, 1 - v.zoom)",
+					"position": [ "math.clamp(-(math.clamp(q.position(0), v.min_x, v.max_x) - v.npc2_x) * math.clamp(math.abs(8 / (math.clamp(q.position(2), v.min_z, v.max_z) - v.npc2_z)), 0, v.x_cal), -8, 8)", "math.clamp((math.clamp(q.position(2), v.min_z, v.max_z) - v.npc2_z) * math.clamp(math.abs(8 / (math.clamp(q.position(0), v.min_x, v.max_x) - v.npc2_x)), 0, v.z_cal), -8, 8)", 0 ]
+				},
+				"npc_3": {
+					"scale": "math.lerp(v.npc_scale_min, v.npc_scale_max, 1 - v.zoom)",
+					"position": [ "math.clamp(-(math.clamp(q.position(0), v.min_x, v.max_x) - v.npc3_x) * math.clamp(math.abs(8 / (math.clamp(q.position(2), v.min_z, v.max_z) - v.npc3_z)), 0, v.x_cal), -8, 8)", "math.clamp((math.clamp(q.position(2), v.min_z, v.max_z) - v.npc3_z) * math.clamp(math.abs(8 / (math.clamp(q.position(0), v.min_x, v.max_x) - v.npc3_x)), 0, v.z_cal), -8, 8)", 0 ]
+				},
+				"npc_4": {
+					"scale": "math.lerp(v.npc_scale_min, v.npc_scale_max, 1 - v.zoom)",
+					"position": [ "math.clamp(-(math.clamp(q.position(0), v.min_x, v.max_x) - v.npc4_x) * math.clamp(math.abs(8 / (math.clamp(q.position(2), v.min_z, v.max_z) - v.npc4_z)), 0, v.x_cal), -8, 8)", "math.clamp((math.clamp(q.position(2), v.min_z, v.max_z) - v.npc4_z) * math.clamp(math.abs(8 / (math.clamp(q.position(0), v.min_x, v.max_x) - v.npc4_x)), 0, v.z_cal), -8, 8)", 0 ]
+				},
+				"npc_5": {
+					"scale": "math.lerp(v.npc_scale_min, v.npc_scale_max, 1 - v.zoom)",
+					"position": [ "math.clamp(-(math.clamp(q.position(0), v.min_x, v.max_x) - v.npc5_x) * math.clamp(math.abs(8 / (math.clamp(q.position(2), v.min_z, v.max_z) - v.npc5_z)), 0, v.x_cal), -8, 8)", "math.clamp((math.clamp(q.position(2), v.min_z, v.max_z) - v.npc5_z) * math.clamp(math.abs(8 / (math.clamp(q.position(0), v.min_x, v.max_x) - v.npc5_x)), 0, v.z_cal), -8, 8)", 0 ]
+				},
+				"npc_6": {
+					"scale": "math.lerp(v.npc_scale_min, v.npc_scale_max, 1 - v.zoom)",
+					"position": [ "math.clamp(-(math.clamp(q.position(0), v.min_x, v.max_x) - v.npc6_x) * math.clamp(math.abs(8 / (math.clamp(q.position(2), v.min_z, v.max_z) - v.npc6_z)), 0, v.x_cal), -8, 8)", "math.clamp((math.clamp(q.position(2), v.min_z, v.max_z) - v.npc6_z) * math.clamp(math.abs(8 / (math.clamp(q.position(0), v.min_x, v.max_x) - v.npc6_x)), 0, v.z_cal), -8, 8)", 0 ]
+				},
+				"npc_7": {
+					"scale": "math.lerp(v.npc_scale_min, v.npc_scale_max, 1 - v.zoom)",
+					"position": [ "math.clamp(-(math.clamp(q.position(0), v.min_x, v.max_x) - v.npc7_x) * math.clamp(math.abs(8 / (math.clamp(q.position(2), v.min_z, v.max_z) - v.npc7_z)), 0, v.x_cal), -8, 8)", "math.clamp((math.clamp(q.position(2), v.min_z, v.max_z) - v.npc7_z) * math.clamp(math.abs(8 / (math.clamp(q.position(0), v.min_x, v.max_x) - v.npc7_x)), 0, v.z_cal), -8, 8)", 0 ]
+				},
+				"npc_8": {
+					"scale": "math.lerp(v.npc_scale_min, v.npc_scale_max, 1 - v.zoom)",
+					"position": [ "math.clamp(-(math.clamp(q.position(0), v.min_x, v.max_x) - v.npc8_x) * math.clamp(math.abs(8 / (math.clamp(q.position(2), v.min_z, v.max_z) - v.npc8_z)), 0, v.x_cal), -8, 8)", "math.clamp((math.clamp(q.position(2), v.min_z, v.max_z) - v.npc8_z) * math.clamp(math.abs(8 / (math.clamp(q.position(0), v.min_x, v.max_x) - v.npc8_x)), 0, v.z_cal), -8, 8)", 0 ]
+				},
+				"npc_9": {
+					"scale": "math.lerp(v.npc_scale_min, v.npc_scale_max, 1 - v.zoom)",
+					"position": [ "math.clamp(-(math.clamp(q.position(0), v.min_x, v.max_x) - v.npc9_x) * math.clamp(math.abs(8 / (math.clamp(q.position(2), v.min_z, v.max_z) - v.npc9_z)), 0, v.x_cal), -8, 8)", "math.clamp((math.clamp(q.position(2), v.min_z, v.max_z) - v.npc9_z) * math.clamp(math.abs(8 / (math.clamp(q.position(0), v.min_x, v.max_x) - v.npc9_x)), 0, v.z_cal), -8, 8)", 0 ]
+				},
+
+				// Distance-dependent Visibilty Example: Icon only shows when in 100 radius
+				"npc_10": {
+					"scale": "math.abs(q.position(0) - v.npc10_x) > 100.0 || math.abs(q.position(2) - v.npc10_z) > 100.0 ? 0 : math.lerp(v.npc_scale_min, v.npc_scale_max, 1 - v.zoom)",
+					"position": [ "math.clamp(-(math.clamp(q.position(0), v.min_x, v.max_x) - v.npc10_x) * math.clamp(math.abs(8 / (math.clamp(q.position(2), v.min_z, v.max_z) - v.npc10_z)), 0, v.x_cal), -8, 8)", "math.clamp((math.clamp(q.position(2), v.min_z, v.max_z) - v.npc10_z) * math.clamp(math.abs(8 / (math.clamp(q.position(0), v.min_x, v.max_x) - v.npc10_x)), 0, v.z_cal), -8, 8)", 0 ]
+				}
+			}
+		},
+		"animation.player.minimap.not_bound_to_edges": {
+			"loop": true,
+			"bones": {
+				"minimap": {
+					"relative_to": {
+						"rotation": "entity"
+					},
+					"rotation": [ 0, "q.is_riding ? q.target_y_rotation : 0", 0 ]
+				},
+				"self": {
+					"rotation": [ 0, 0, "q.is_sneaking || q.is_sprinting ? q.camera_rotation(1) + 180 : 0" ],
+					"scale": "math.lerp(v.self_scale_min, v.self_scale_max, 1 - v.zoom)"
+				},
+				"bg": {
+					"scale": 1.15
+				},
+				"npc_1": {
+					"scale": "math.lerp(v.npc_scale_min, v.npc_scale_max, 1 - v.zoom)",
+					"position": [ "math.clamp(-(q.position(0) - v.npc1_x) * math.clamp(math.abs(8 / (q.position(2) - v.npc1_z)), 0, v.x_cal), -8, 8)", "math.clamp((q.position(2) - v.npc1_z) * math.clamp(math.abs(8 / (q.position(0)- v.npc1_x)), 0, v.z_cal), -8, 8)", 0 ]
+				}, 
+				"npc_2": {
+					"scale": "math.lerp(v.npc_scale_min, v.npc_scale_max, 1 - v.zoom)",
+					"position": [ "math.clamp(-(q.position(0) - v.npc2_x) * math.clamp(math.abs(8 / (q.position(2) - v.npc2_z)), 0, v.x_cal), -8, 8)", "math.clamp((q.position(2) - v.npc2_z) * math.clamp(math.abs(8 / (q.position(0)- v.npc2_x)), 0, v.z_cal), -8, 8)", 0 ]
+				},
+				"npc_3": {
+					"scale": "math.lerp(v.npc_scale_min, v.npc_scale_max, 1 - v.zoom)",
+					"position": [ "math.clamp(-(q.position(0)- v.npc3_x) * math.clamp(math.abs(8 / (q.position(2) - v.npc3_z)), 0, v.x_cal), -8, 8)", "math.clamp((q.position(2) - v.npc3_z) * math.clamp(math.abs(8 / (q.position(0)- v.npc3_x)), 0, v.z_cal), -8, 8)", 0 ]
+				},
+				"npc_4": {
+					"scale": "math.lerp(v.npc_scale_min, v.npc_scale_max, 1 - v.zoom)",
+					"position": [ "math.clamp(-(q.position(0)- v.npc4_x) * math.clamp(math.abs(8 / (q.position(2) - v.npc4_z)), 0, v.x_cal), -8, 8)", "math.clamp((q.position(2) - v.npc4_z) * math.clamp(math.abs(8 / (q.position(0)- v.npc4_x)), 0, v.z_cal), -8, 8)", 0 ]
+				},
+				"npc_5": {
+					"scale": "math.lerp(v.npc_scale_min, v.npc_scale_max, 1 - v.zoom)",
+					"position": [ "math.clamp(-(q.position(0)- v.npc5_x) * math.clamp(math.abs(8 / (q.position(2) - v.npc5_z)), 0, v.x_cal), -8, 8)", "math.clamp((q.position(2) - v.npc5_z) * math.clamp(math.abs(8 / (q.position(0)- v.npc5_x)), 0, v.z_cal), -8, 8)", 0 ]
+				},
+				"npc_6": {
+					"scale": "math.lerp(v.npc_scale_min, v.npc_scale_max, 1 - v.zoom)",
+					"position": [ "math.clamp(-(q.position(0)- v.npc6_x) * math.clamp(math.abs(8 / (q.position(2) - v.npc6_z)), 0, v.x_cal), -8, 8)", "math.clamp((q.position(2) - v.npc6_z) * math.clamp(math.abs(8 / (q.position(0)- v.npc6_x)), 0, v.z_cal), -8, 8)", 0 ]
+				},
+				"npc_7": {
+					"scale": "math.lerp(v.npc_scale_min, v.npc_scale_max, 1 - v.zoom)",
+					"position": [ "math.clamp(-(q.position(0)- v.npc7_x) * math.clamp(math.abs(8 / (q.position(2) - v.npc7_z)), 0, v.x_cal), -8, 8)", "math.clamp((q.position(2) - v.npc7_z) * math.clamp(math.abs(8 / (q.position(0)- v.npc7_x)), 0, v.z_cal), -8, 8)", 0 ]
+				},
+				"npc_8": {
+					"scale": "math.lerp(v.npc_scale_min, v.npc_scale_max, 1 - v.zoom)",
+					"position": [ "math.clamp(-(q.position(0)- v.npc8_x) * math.clamp(math.abs(8 / (q.position(2) - v.npc8_z)), 0, v.x_cal), -8, 8)", "math.clamp((q.position(2) - v.npc8_z) * math.clamp(math.abs(8 / (q.position(0)- v.npc8_x)), 0, v.z_cal), -8, 8)", 0 ]
+				},
+				"npc_9": {
+					"scale": "math.lerp(v.npc_scale_min, v.npc_scale_max, 1 - v.zoom)",
+					"position": [ "math.clamp(-(q.position(0)- v.npc9_x) * math.clamp(math.abs(8 / (q.position(2) - v.npc9_z)), 0, v.x_cal), -8, 8)", "math.clamp((q.position(2) - v.npc9_z) * math.clamp(math.abs(8 / (q.position(0)- v.npc9_x)), 0, v.z_cal), -8, 8)", 0 ]
+				},
+
+				// Distance-dependent Visibilty Example: Icon only shows when in 100 radius
+				"npc_10": {
+					"scale": "math.abs(q.position(0) - v.npc10_x) > 100.0 || math.abs(q.position(2) - v.npc10_z) > 100.0 ? 0 : math.lerp(v.npc_scale_min, v.npc_scale_max, 1 - v.zoom)",
+					"position": [ "math.clamp(-(q.position(0)- v.npc10_x) * math.clamp(math.abs(8 / (q.position(2) - v.npc10_z)), 0, v.x_cal), -8, 8)", "math.clamp((q.position(2) - v.npc10_z) * math.clamp(math.abs(8 / (q.position(0)- v.npc10_x)), 0, v.z_cal), -8, 8)", 0 ]
+				}
+			}
+		},
+		"animation.player.minimap.setup": {
+			"loop": true,
+			"bones": {
+				"minimap": {
+					"scale": 0
+				}
+			}
+		},
+		"animation.player.minimap.turn_on": {
+			"animation_length": 0.2,
+			"loop": "hold_on_last_frame",
+			"bones": {
+				"minimap": {
+					"scale": [ 1, "math.clamp(q.anim_time * 5, 0, 1.0)", 1 ]
+				}
+			}
+		},
+		"animation.player.minimap.turn_off": {
+			"animation_length": 0.2,
+			"loop": "hold_on_last_frame",
+			"bones": {
+				"minimap": {
+					"scale": [ 1, "math.clamp(1 - (q.anim_time * 5), 0, 1.0)", 1 ]
+				}
+			}
+		}
+	}
+}

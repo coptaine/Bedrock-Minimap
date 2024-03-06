@@ -1,0 +1,114 @@
+{
+  "format_version": "1.8.0",
+  "render_controllers": {
+    "controller.render.minimap.bound_to_edges": {
+      "geometry": "Geometry.minimap",
+      "materials": [{ "*": "Material.animated" }],
+      "textures": [ "Texture.minimap" ],
+      "is_hurt_color": {},
+      "on_fire_color": {},
+      "uv_anim": {
+        "offset": [ "math.clamp((q.position(0) + (-v.cor_x - (v.zoom_x * v.res_x / 2))) / v.res_x, 0, v.max_offset_x)", "math.clamp((q.position(2) + (-v.cor_z - (v.zoom_z * v.res_z / 2))) / v.res_z, 0, v.max_offset_z)" ], 
+        "scale": [ "v.zoom_x", "v.zoom_z" ]
+      },
+      "part_visibility": [{ "bg": false }]
+    },
+    "controller.render.minimap.not_bound_to_edges": {
+      "geometry": "Geometry.minimap",
+      "materials": [{ "*": "Material.animated" }],
+      "textures": [ "Texture.minimap" ],
+      "is_hurt_color": {},
+      "on_fire_color": {},
+      "uv_anim": {
+        "offset": [ "(q.position(0) + (-v.cor_x - (v.zoom_x * v.res_x / 2))) / v.res_x", "(q.position(2) + (-v.cor_z - (v.zoom_z * v.res_z / 2))) / v.res_z" ], 
+        "scale": [ "v.zoom_x", "v.zoom_z" ]
+      },
+      "part_visibility": [{ "bg": false }]
+    },
+    "controller.render.minimap_bg": {
+      "geometry": "Geometry.minimap",
+      "materials": [{ "*": "Material.default" }],
+      "textures": [ "Texture.minimap_bg" ],
+      "is_hurt_color": {},
+      "on_fire_color": {},
+      "part_visibility": [{ "map": false }]
+    },
+    "controller.render.minimap.self": {
+      "geometry": "Geometry.minimap_self",
+      "materials": [{ "*": "Material.default" }],
+      "textures": [ "q.is_sneaking || q.is_sprinting ? Texture.minimap_self : Texture.minimap_self2" ],
+      "is_hurt_color": {},
+      "on_fire_color": {}
+    },
+    "controller.render.minimap.npc1": {
+      "geometry": "Geometry.minimap_npc1",
+      "materials": [{ "*": "Material.default" }],
+      "textures": [ "Texture.minimap_npc1" ],
+      "is_hurt_color": {},
+      "on_fire_color": {}
+    },
+    "controller.render.minimap.npc2": {
+      "geometry": "Geometry.minimap_npc2",
+      "materials": [{ "*": "Material.default" }],
+      "textures": [ "Texture.minimap_npc2" ],
+      "is_hurt_color": {},
+      "on_fire_color": {}
+    },
+    "controller.render.minimap.npc3": {
+      "geometry": "Geometry.minimap_npc3",
+      "materials": [{ "*": "Material.default" }],
+      "textures": [ "Texture.minimap_npc3" ],
+      "is_hurt_color": {},
+      "on_fire_color": {}
+    },
+    "controller.render.minimap.npc4": {
+      "geometry": "Geometry.minimap_npc4",
+      "materials": [{ "*": "Material.default" }],
+      "textures": [ "Texture.minimap_npc4" ],
+      "is_hurt_color": {},
+      "on_fire_color": {}
+    },
+    "controller.render.minimap.npc5": {
+      "geometry": "Geometry.minimap_npc5",
+      "materials": [{ "*": "Material.default" }],
+      "textures": [ "Texture.minimap_npc5" ],
+      "is_hurt_color": {},
+      "on_fire_color": {}
+    },
+    "controller.render.minimap.npc6": {
+      "geometry": "Geometry.minimap_npc6",
+      "materials": [{ "*": "Material.default" }],
+      "textures": [ "Texture.minimap_npc6" ],
+      "is_hurt_color": {},
+      "on_fire_color": {}
+    },
+    "controller.render.minimap.npc7": {
+      "geometry": "Geometry.minimap_npc7",
+      "materials": [{ "*": "Material.default" }],
+      "textures": [ "Texture.minimap_npc7" ],
+      "is_hurt_color": {},
+      "on_fire_color": {}
+    },
+    "controller.render.minimap.npc8": {
+      "geometry": "Geometry.minimap_npc8",
+      "materials": [{ "*": "Material.default" }],
+      "textures": [ "Texture.minimap_npc8" ],
+      "is_hurt_color": {},
+      "on_fire_color": {}
+    },
+    "controller.render.minimap.npc9": {
+      "geometry": "Geometry.minimap_npc9",
+      "materials": [{ "*": "Material.default" }],
+      "textures": [ "Texture.minimap_npc9" ],
+      "is_hurt_color": {},
+      "on_fire_color": {}
+    },
+    "controller.render.minimap.npc10": {
+      "geometry": "Geometry.minimap_npc10",
+      "materials": [{ "*": "Material.default" }],
+      "textures": [ "Texture.minimap_npc10" ],
+      "is_hurt_color": {},
+      "on_fire_color": {}
+    }
+  }
+}

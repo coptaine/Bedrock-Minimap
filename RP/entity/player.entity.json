@@ -1,0 +1,200 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "minecraft:player",
+      "materials": {
+        "default": "entity_alphatest",
+        "cape": "entity_alphatest",
+        "animated": "player_animated",
+        "map": "map"
+      },
+      "textures": {
+        "default": "textures/entity/steve",
+        "cape": "textures/entity/cape_invisible",
+        "minimap": "textures/minimap/world_map",
+        "minimap_bg": "textures/map/map_background",
+        "minimap_self": "textures/minimap/self",
+        "minimap_self2": "textures/minimap/self2",
+        "minimap_npc1": "textures/minimap/npc1",
+        "minimap_npc2": "textures/minimap/npc2",
+        "minimap_npc3": "textures/minimap/npc3",
+        "minimap_npc4": "textures/minimap/npc4",
+        "minimap_npc5": "textures/minimap/npc5",
+        "minimap_npc6": "textures/minimap/npc6",
+        "minimap_npc7": "textures/minimap/npc7",
+        "minimap_npc8": "textures/minimap/npc8",
+        "minimap_npc9": "textures/minimap/npc9",
+        "minimap_npc10": "textures/minimap/npc10"
+      },
+      "geometry": {
+        "default": "geometry.humanoid.custom",
+        "cape": "geometry.cape",
+        "minimap": "geometry.minimap",
+        "minimap_self": "geometry.minimap.self",
+        "minimap_npc1": "geometry.minimap.npc1",
+        "minimap_npc2": "geometry.minimap.npc2",
+        "minimap_npc3": "geometry.minimap.npc3",
+        "minimap_npc4": "geometry.minimap.npc4",
+        "minimap_npc5": "geometry.minimap.npc5",
+        "minimap_npc6": "geometry.minimap.npc6",
+        "minimap_npc7": "geometry.minimap.npc7",
+        "minimap_npc8": "geometry.minimap.npc8",
+        "minimap_npc9": "geometry.minimap.npc9",
+        "minimap_npc10": "geometry.minimap.npc10"
+      },
+      "scripts": {
+        "scale": "0.9375",
+        "initialize": [
+          "variable.is_holding_right = 0.0;",
+          "variable.is_blinking = 0.0;",
+          "variable.last_blink_time = 0.0;",
+          "variable.hand_bob = 0.0;",
+          // Minimap variables
+          "variable.res_x = 672;", // Texture width in blocks
+          "variable.res_z = 480;", // Texture height in blocks
+          "variable.cor_x = -128;", // Top-left X coordinate
+          "variable.cor_z = -240;", // Top-left Z coordinate
+          "variable.npc1_x = 12;", // NPC 1 X coordinate
+          "variable.npc1_z = 49;", // NPC 1 Z coordinate
+          "variable.npc2_x = 122;", // NPC 2 X coordinate
+          "variable.npc2_z = 108;", // NPC 2 Z coordinate
+          "variable.npc3_x = 247;", // NPC 3 X coordinate
+          "variable.npc3_z = 94;", // NPC 3 X coordinate
+          "variable.npc4_x = 339;", // NPC 4 X coordinate
+          "variable.npc4_z = 78;", // NPC 4 Z coordinate
+          "variable.npc5_x = 475;", // NPC 5 X coordinate
+          "variable.npc5_z = 2;", // NPC 5 Z coordinate
+          "variable.npc6_x = 378;", // NPC 6 X coordinate
+          "variable.npc6_z = -100;", // NPC 6 Z coordinate
+          "variable.npc7_x = 239;", // NPC 7 X coordinate
+          "variable.npc7_z = -118;", // NPC 7 Z coordinate
+          "variable.npc8_x = 150;", // NPC 8 X coordinate
+          "variable.npc8_z = -44;", // NPC 8 Z coordinate
+          "variable.npc9_x = 225;", // NPC 9 X coordinate
+          "variable.npc9_z = -29;", // NPC 9 Z coordinate
+          "variable.npc10_x = 282;", // NPC 10 X coordinate
+          "variable.npc10_z = 24;", // NPC 10 Z coordinate
+          "variable.self_scale_min = 0.55;", // Self icon minimum size
+          "variable.self_scale_max = 0.75;", // Self icon maximum size
+          "variable.npc_scale_min = 0.55;", // Self icon minimum size
+          "variable.npc_scale_max = 0.75;", // Self icon maximum size
+          "variable.block_min = 128;", // Minimum blocks the map can show (length/width), minimum of 16 is recommended, 128 for optimal
+          "variable.zoom_min = 0;", // Minimum map zoom in % (zoom in)
+          "variable.zoom_max = 1;", // Maximum map zoom in % (zoom out)
+          "variable.zoom_speed = 0.03;", // Zoom speed when using the map item (zoom per tick)
+          "variable.zoom = 0;", /// Zoom level on first use
+          "variable.config_bound_to_edges = true;" // Default: Map texture won't go beyond the screen when you are too far away from it
+        ],
+        "pre_animation": [
+          "variable.helmet_layer_visible = 1.0;",
+          "variable.leg_layer_visible = 1.0;",
+          "variable.boot_layer_visible = 1.0;",
+          "variable.chest_layer_visible = 1.0;",
+          "variable.attack_body_rot_y = Math.sin(360*Math.sqrt(variable.attack_time)) * 5.0;",
+          "variable.tcos0 = (math.cos(query.modified_distance_moved * 38.17) * query.modified_move_speed / variable.gliding_speed_value) * 57.3;",
+          "variable.first_person_rotation_factor = math.sin((1 - variable.attack_time) * 180.0);",
+          "variable.hand_bob = query.life_time < 0.01 ? 0.0 : variable.hand_bob + ((query.is_on_ground && query.is_alive ? math.clamp(math.sqrt(math.pow(query.position_delta(0), 2.0) + math.pow(query.position_delta(2), 2.0)), 0.0, 0.1) : 0.0) - variable.hand_bob) * 0.02;",
+          "variable.attack_body_rot_y = Math.sin(360*Math.sqrt(variable.attack_time)) * 5.0;",
+          "variable.map_angle = math.clamp(1 - variable.player_x_rotation / 45.1, 0.0, 1.0);",
+          "variable.item_use_normalized = query.main_hand_item_use_duration / query.main_hand_item_max_duration;",
+          // Minimap
+          "variable.minimap = query.get_equipped_item_name == 'minimap';",
+					"variable.zoom_x = math.lerp(1 / (variable.res_x / variable.block_min), math.clamp(variable.res_z / variable.res_x, 0, 1.0), variable.zoom);",
+					"variable.zoom_z = math.lerp(1 / (variable.res_z / variable.block_min), math.clamp(variable.res_x / variable.res_z, 0, 1.0), variable.zoom);",
+          "variable.min_x = variable.cor_x + (variable.zoom_x * variable.res_x / 2) + 0.0001;",
+          "variable.min_z = variable.cor_z + (variable.zoom_z * variable.res_z / 2) + 0.0001;",
+          "variable.max_x = variable.cor_x + (variable.res_x - (variable.zoom_x * variable.res_x / 2)) + 0.0001;",
+          "variable.max_z = variable.cor_z + (variable.res_z - (variable.zoom_z * variable.res_z / 2)) + 0.0001;",
+          "variable.max_offset_x = (variable.res_x - (variable.res_x * variable.zoom_x)) / variable.res_x;",
+          "variable.max_offset_z = (variable.res_z - (variable.res_z * variable.zoom_z)) / variable.res_z;",
+          "variable.x_cal = 0.125 / (math.lerp(1.0 , math.min(variable.res_x, variable.res_z) / variable.block_min, variable.zoom));",
+          "variable.z_cal = 0.125 / (math.lerp(1.0 , math.min(variable.res_x, variable.res_z) / variable.block_min, variable.zoom));"
+        ],
+        "animate": [
+          "root",
+          { "minimap.bound_to_edges": "variable.config_bound_to_edges" },
+          { "minimap.not_bound_to_edges": "!variable.config_bound_to_edges" },
+          "minimap_root",
+					"minimap_zoom"
+        ]
+      },
+      "animations": {
+        "root": "controller.animation.player.root",
+        "base_controller": "controller.animation.player.base",
+        "humanoid_base_pose": "animation.humanoid.base_pose",
+        "look_at_target": "controller.animation.humanoid.look_at_target",
+        "look_at_target_ui": "animation.player.look_at_target.ui",
+        "look_at_target_default": "animation.humanoid.look_at_target.default",
+        "look_at_target_gliding": "animation.humanoid.look_at_target.gliding",
+        "look_at_target_swimming": "animation.humanoid.look_at_target.swimming",
+        "look_at_target_inverted": "animation.player.look_at_target.inverted",
+        "cape": "animation.player.cape",
+        "move.arms": "animation.player.move.arms",
+        "move.legs": "animation.player.move.legs",
+        "swimming": "animation.player.swim",
+        "swimming.legs": "animation.player.swim.legs",
+        "riding.arms": "animation.player.riding.arms",
+        "riding.legs": "animation.player.riding.legs",
+        "holding": "animation.player.holding",
+        "brandish_spear": "animation.humanoid.brandish_spear",
+        "charging": "animation.humanoid.charging",
+        "attack.positions": "animation.player.attack.positions",
+        "attack.rotations": "animation.player.attack.rotations",
+        "sneaking": "animation.player.sneaking",
+        "bob": "animation.player.bob",
+        "damage_nearby_mobs": "animation.humanoid.damage_nearby_mobs",
+        "fishing_rod": "animation.humanoid.fishing_rod",
+        "use_item_progress": "animation.humanoid.use_item_progress",
+        "skeleton_attack": "animation.skeleton.attack",
+        "sleeping": "animation.player.sleeping",
+        "first_person_base_pose": "animation.player.first_person.base_pose",
+        "first_person_empty_hand": "animation.player.first_person.empty_hand",
+        "first_person_swap_item": "animation.player.first_person.swap_item",
+        "first_person_attack_controller": "controller.animation.player.first_person_attack",
+        "first_person_attack_rotation": "animation.player.first_person.attack_rotation",
+        "first_person_vr_attack_rotation": "animation.player.first_person.vr_attack_rotation",
+        "first_person_map_controller": "controller.animation.player.first_person_map",
+        "first_person_map_hold": "animation.player.first_person.map_hold",
+        "first_person_map_hold_attack": "animation.player.first_person.map_hold_attack",
+        "first_person_map_hold_off_hand": "animation.player.first_person.map_hold_off_hand",
+        "first_person_map_hold_main_hand": "animation.player.first_person.map_hold_main_hand",
+        "first_person_crossbow_equipped": "animation.player.first_person.crossbow_equipped",
+        "third_person_crossbow_equipped": "animation.player.crossbow_equipped",
+        "third_person_bow_equipped": "animation.player.bow_equipped",
+        "crossbow_hold": "animation.player.crossbow_hold",
+        "crossbow_controller": "controller.animation.player.crossbow",
+        "shield_block_main_hand": "animation.player.shield_block_main_hand",
+        "shield_block_off_hand": "animation.player.shield_block_off_hand",
+        "blink": "controller.animation.persona.blink",
+        "minimap.bound_to_edges": "animation.player.minimap.bound_to_edges",
+        "minimap.not_bound_to_edges": "animation.player.minimap.not_bound_to_edges",
+		    "minimap_root": "controller.animation.player.minimap_root",
+        "minimap_zoom": "controller.animation.player.minimap_zoom",
+				"minimap_setup": "animation.player.minimap.setup",
+        "minimap_on": "animation.player.minimap.turn_on",
+        "minimap_off": "animation.player.minimap.turn_off"
+      },
+      "render_controllers": [
+        { "controller.render.player.first_person": "variable.is_first_person" },
+        { "controller.render.player.third_person": "!variable.is_first_person && !variable.map_face_icon" },
+        { "controller.render.player.map": "variable.map_face_icon" },
+        { "controller.render.minimap.bound_to_edges": "variable.config_bound_to_edges && query.life_time >= 5.0 && !query.is_swimming && query.is_in_ui && !query.is_spectator" },
+        { "controller.render.minimap.not_bound_to_edges": "!variable.config_bound_to_edges && query.life_time >= 5.0 && !query.is_swimming && query.is_in_ui && !query.is_spectator" },
+        { "controller.render.minimap_bg": "query.life_time >= 5.0 && !query.is_swimming && query.is_in_ui && !query.is_spectator" },
+        { "controller.render.minimap.self": "query.life_time >= 5.0 && !query.is_swimming && query.is_in_ui && !query.is_spectator" },
+        { "controller.render.minimap.npc1": "query.life_time >= 5.0 && !query.is_swimming && query.is_in_ui && !query.is_spectator" },
+        { "controller.render.minimap.npc2": "query.life_time >= 5.0 && !query.is_swimming && query.is_in_ui && !query.is_spectator" },
+        { "controller.render.minimap.npc3": "query.life_time >= 5.0 && !query.is_swimming && query.is_in_ui && !query.is_spectator" },
+        { "controller.render.minimap.npc4": "query.life_time >= 5.0 && !query.is_swimming && query.is_in_ui && !query.is_spectator" },
+        { "controller.render.minimap.npc5": "query.life_time >= 5.0 && !query.is_swimming && query.is_in_ui && !query.is_spectator" },
+        { "controller.render.minimap.npc6": "query.life_time >= 5.0 && !query.is_swimming && query.is_in_ui && !query.is_spectator" },
+        { "controller.render.minimap.npc7": "query.life_time >= 5.0 && !query.is_swimming && query.is_in_ui && !query.is_spectator" },
+        { "controller.render.minimap.npc8": "query.life_time >= 5.0 && !query.is_swimming && query.is_in_ui && !query.is_spectator" },
+        { "controller.render.minimap.npc9": "query.life_time >= 5.0 && !query.is_swimming && query.is_in_ui && !query.is_spectator" },
+        { "controller.render.minimap.npc10": "query.life_time >= 5.0 && !query.is_swimming && query.is_in_ui && !query.is_spectator" }
+      ],
+      "enable_attachables": true
+    }
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.player.minimap_root": {
+      "initial_state": "default",
+      "states": {
+        "default": {
+					"animations": [ "minimap_setup" ],
+					"transitions": [
+						{ "on": "v.minimap" }
+					]
+				},
+        "on": {
+          "animations": [ "minimap_on" ],
+          "transitions": [
+            { "off": "!v.minimap" }
+          ]
+        },
+        "off": {
+          "animations": [ "minimap_off" ],
+          "transitions": [
+            { "on": "v.minimap" }
+          ]
+        }
+      }
+    },
+    "controller.animation.player.minimap_zoom": {
+      "initial_state": "default",
+      "states": {
+        "default": {
+          "transitions": [
+            { "zoom_in": "v.minimap && q.is_using_item && !q.is_sneaking" },
+            { "zoom_out": "v.minimap && q.is_using_item && q.is_sneaking" }
+          ]
+        },
+        "zoom_in": {
+          "on_entry": [ "v.zoom = math.clamp(v.zoom - v.zoom_speed, v.zoom_min, v.zoom_max);" ],
+          "transitions": [
+            { "default": "1.0" }
+          ]
+        },
+        "zoom_out": {
+          "on_entry": [ "v.zoom = math.clamp(v.zoom + v.zoom_speed, v.zoom_min, v.zoom_max);" ],
+          "transitions": [
+            { "default": "1.0" }
+          ]
+        }
+      }
+    }
+  }
+}

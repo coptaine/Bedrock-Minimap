@@ -1,0 +1,9 @@
+{
+  "resource_pack_name": "Coptaine's Minimap",
+  "texture_name": "atlas.items",
+  "texture_data": {
+    "minimap": {
+      "textures": "textures/items/minimap"
+    }
+  }
+}

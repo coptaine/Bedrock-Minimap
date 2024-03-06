@@ -1,0 +1,27 @@
+{
+  "format_version": 2,
+  "header": {
+    "name": "§lCoptaine's Minimap",
+    "description": "§cby §bCoptaine\n§7Minimap for pre-made worlds.",
+    "uuid": "0ee96242-d63b-4a98-83e2-bfd3f24c5b0f",
+    "version": [ 1, 0, 0 ],
+    "min_engine_version": [ 1, 20, 50 ]
+  },
+  "modules": [
+    {
+      "type": "data",
+      "uuid": "8f5bd89a-1abb-4e73-9f64-99dcc89a2239",
+      "version": [ 1, 0, 0 ]
+    }
+  ],
+  "dependencies": [
+    {
+      "uuid": "ad2a3ec6-f3ae-49cb-83e9-8ce74548d064",
+      "version": [ 1, 0, 0 ]
+    }
+  ],
+  "metadata": {
+    "authors": [ "Coptaine" ],
+    "url": "https://mcpedl.com/coptaine/"
+  }
+}
