@@ -34,13 +34,13 @@
           ]
         },
         "zoom_in": {
-          "on_entry": [ "v.zoom = math.clamp(v.zoom - v.zoom_speed, v.zoom_min, v.zoom_max);" ],
+          "on_entry": [ "v.zoom = math.clamp(v.zoom + v.zoom_speed, v.zoom_min, v.zoom_max);" ],
           "transitions": [
             { "default": "1.0" }
           ]
         },
         "zoom_out": {
-          "on_entry": [ "v.zoom = math.clamp(v.zoom + v.zoom_speed, v.zoom_min, v.zoom_max);" ],
+          "on_entry": [ "v.zoom = math.clamp(v.zoom - v.zoom_speed, v.zoom_min, v.zoom_max);" ],
           "transitions": [
             { "default": "1.0" }
           ]
