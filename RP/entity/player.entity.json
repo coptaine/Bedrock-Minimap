@@ -99,7 +99,7 @@
           "variable.map_angle = math.clamp(1 - variable.player_x_rotation / 45.1, 0.0, 1.0);",
           "variable.item_use_normalized = query.main_hand_item_use_duration / query.main_hand_item_max_duration;",
           // Minimap
-          "variable.minimap = query.get_equipped_item_name == 'minimap';",
+          "variable.minimap = query.is_item_name_any('slot.weapon.mainhand', 'coptaine:minimap') ||  query.is_item_name_any('slot.weapon.offhand', 'coptaine:minimap');",
 					"variable.zoom_x = math.lerp(1 / (variable.res_x / variable.block_min), math.clamp(variable.res_z / variable.res_x, 0, 1.0), variable.zoom);",
 					"variable.zoom_z = math.lerp(1 / (variable.res_z / variable.block_min), math.clamp(variable.res_x / variable.res_z, 0, 1.0), variable.zoom);",
           "variable.min_x = variable.cor_x + (variable.zoom_x * variable.res_x / 2) + 0.0001;",

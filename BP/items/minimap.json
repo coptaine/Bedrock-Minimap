@@ -13,17 +13,18 @@
 				"value": "Minimap"
 			},
 			"minecraft:tags": {
-				"tags": [
-					"coptaine:minimap"
-				]
+				"tags": [ "coptaine:minimap" ]
 			},
-			"minecraft:food":{
+			"minecraft:food": {
 				"can_always_eat": true
-		},
+			},
 			"minecraft:use_animation": "eat",
 			"minecraft:use_modifiers": {
 				"use_duration": 99999,
 				"movement_modifier": 1
+			},
+			"minecraft:allow_off_hand": {
+				"value": true
 			}
 		}
 	}
