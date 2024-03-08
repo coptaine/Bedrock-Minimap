@@ -17,9 +17,9 @@ FEATURES:
 
 ![map_player_rotation](https://github.com/coptaine/Bedrock-Minimap/assets/34676595/72eb7a02-a4a6-48a3-9531-fdfee6d02ed8)
 
-- NPCs or other non player icons in the map:
+- Non-Player icons are bound to the edges:
 
-![minimap](https://github.com/coptaine/Bedrock-Minimap/assets/34676595/27cd6c3d-12d3-4bc1-aad6-8bb8cc2439bb)
+![map_bound](https://github.com/coptaine/Bedrock-Minimap/assets/34676595/6fe68520-df24-45bf-a71e-96579b61d440)
 
 - Edge detection, player icon moves instead of the map when on the edge of map:
 
@@ -50,7 +50,7 @@ Textures are inside textures/minimap. Change the textures and add more if needed
 ![image](https://github.com/coptaine/Bedrock-Minimap/assets/34676595/42d90dca-f831-4e1d-8e75-62a05443e661)
 
 The main config is in the player.entity.json. There are 10 npcs that already made, modify its coordinates and add more if needed.
-# Adding npcs:
+## Adding npcs:
 - Add the coordinates under the initialize:
 
 ```
@@ -88,6 +88,45 @@ The main config is in the player.entity.json. There are 10 npcs that already mad
 - Add model:
 ```
 { "description": { "identifier": "geometry.minimap.npc1", "texture_width": 2, "texture_height": 2, "visible_bounds_width": 2, "visible_bounds_height": 13, "visible_bounds_offset": [0, 5.5, 0]}, "bones": [{ "name": "minimap", "pivot": [0, 177, 0]}, { "name": "npc_1", "parent": "minimap", "pivot": [0, 176, 0], "cubes": [{ "origin": [-1, 175, -0.1], "size": [2, 2, 0], "uv": [0, 0]}]}]}
+```
+
+## Changing map background texture:
+```
+"minimap_bg": "textures/map/map_background"
+```
+
+## Changing map activation method: 
+```
+"variable.minimap = query.is_item_name_any('slot.weapon.mainhand', 'coptaine:minimap') ||  query.is_item_name_any('slot.weapon.offhand', 'coptaine:minimap');"
+```
+
+Tip: Just change the value to true to make it always show
+
+## Resizing the map:
+  (Animation file) Add "scale" value to the "minimap" bone
+  
+```
+"minimap": {
+					"relative_to": {
+						"rotation": "entity"
+					},
+					"rotation": [ 0, "q.is_riding ? q.target_y_rotation : 0", 0 ],
+					"scale": 1
+				},
+```
+
+## Moving the map:
+  (UI File) Play with values of "offset"
+  
+```
+{
+                "minimap": {
+                  "renderer": "live_player_renderer",
+                  "size": [ 100, 100 ],
+                  "offset": [ -70, 950 ],
+                  "type": "custom"
+                }
+              }
 ```
 
 
